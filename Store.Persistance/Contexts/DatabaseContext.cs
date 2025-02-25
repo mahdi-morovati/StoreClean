@@ -3,9 +3,9 @@ using Store.Domain.Entities.Users;
 
 namespace Store.Persistance.Contexts;
 
-public class DataBaseContext : DbContext
+public class DatabaseContext : DbContext
 {
-    public DataBaseContext(DbContextOptions options) : base(options)
+    public DatabaseContext(DbContextOptions options) : base(options)
     {
     }
     

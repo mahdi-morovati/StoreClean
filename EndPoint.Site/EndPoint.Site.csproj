@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.2" />
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
     </ItemGroup>
 
@@ -316,6 +318,10 @@
       <_ContentIncludedByDefault Remove="wwwroot\AdminTemplate\vendors\js\typeahead\bloodhound.min.js" />
       <_ContentIncludedByDefault Remove="wwwroot\AdminTemplate\vendors\js\typeahead\handlebars.js" />
       <_ContentIncludedByDefault Remove="wwwroot\AdminTemplate\vendors\js\typeahead\typeahead.bundle.min.js" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Store.Persistance\Store.Persistance.csproj" />
     </ItemGroup>
 
 </Project>
