@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Store.Application.Interfaces.Contexts;
 using Store.Persistence.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
 builder.Services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
+
 
 var app = builder.Build();
 

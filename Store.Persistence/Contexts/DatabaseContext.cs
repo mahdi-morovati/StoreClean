@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Store.Application.Interfaces.Contexts;
 using Store.Domain.Entities.Users;
 
 namespace Store.Persistence.Contexts;
 
-public class DatabaseContext : DbContext
+public class DatabaseContext : DbContext, IDatabaseContext
 {
     public DatabaseContext(DbContextOptions options) : base(options)
     {

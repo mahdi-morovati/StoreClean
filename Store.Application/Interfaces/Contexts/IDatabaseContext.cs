@@ -9,8 +9,4 @@ public interface IDatabaseContext
     DbSet<Role> Roles { get; set; }
     DbSet<UserInRole> UserInRoles { get; set; }
     
-    int SaveChanges(bool acceptAllChangesOnSuccess);
-    int SaveChanges();
-    Task<int> SaveChanges(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken());
-    Task<int> SaveChanges(CancellationToken cancellationToken = new CancellationToken());
 }
