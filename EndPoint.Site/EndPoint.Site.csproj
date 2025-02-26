@@ -321,7 +321,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Store.Persistance\Store.Persistance.csproj" />
+      <ProjectReference Include="..\Store.Persistence\Store.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

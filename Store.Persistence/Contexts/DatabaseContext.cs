@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Store.Domain.Entities.Users;
 
-namespace Store.Persistance.Contexts;
+namespace Store.Persistence.Contexts;
 
 public class DatabaseContext : DbContext
 {
