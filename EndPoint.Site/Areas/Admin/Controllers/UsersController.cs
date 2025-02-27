@@ -3,6 +3,7 @@ using Store.Application.Services.Users.Queries.GetUsers;
 
 namespace EndPoint.Site.Areas.Admin.Controllers;
 
+[Area("Admin")]
 public class UsersController : Controller
 {
     private readonly IGetUsersService _getUsersService;
@@ -13,8 +14,7 @@ public class UsersController : Controller
     }
 
     // GET
-    // in this method we should return ViewModel. not Dto
-    [Area("Admin")]
+    // in fact this method we should return ViewModel. not Dto
     public IActionResult Index(string searchKey, int page = 1)
     {
         return View(_getUsersService.Execute(new RequestGetUserDto
@@ -23,4 +23,11 @@ public class UsersController : Controller
             SearchKey = searchKey
         }));
     }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
+    
 }
