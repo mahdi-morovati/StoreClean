@@ -1,7 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using Store.Application.Interfaces.Contexts;
+using Store.Application.Services.Users.Queries.GetUsers;
+using Store.Persistence.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
+builder.Services.AddScoped<IGetUsersService, GetUserService>();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
+builder.Services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
+
 
 var app = builder.Build();
 
@@ -23,5 +35,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name : "areas",
+    pattern : "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+);
 
 app.Run();
