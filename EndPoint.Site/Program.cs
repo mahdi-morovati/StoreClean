@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Store.Application.Interfaces.Contexts;
+using Store.Application.Services.Users.Queries.GetRoles;
 using Store.Application.Services.Users.Queries.GetUsers;
 using Store.Persistence.Contexts;
 
@@ -10,6 +11,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
 builder.Services.AddScoped<IGetUsersService, GetUserService>();
+builder.Services.AddScoped<IGetRolesService, GetRolesService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
 builder.Services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
