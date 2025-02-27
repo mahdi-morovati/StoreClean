@@ -12,7 +12,7 @@ public class GetUserService : IGetUsersService
         _context = context;
     }
 
-    public List<GetUsersDto> Execute(RequestGetUserDto request)
+    public ResultGetUserDto Execute(RequestGetUserDto request)
     {
         var users = _context.Users.AsQueryable();
         if (!string.IsNullOrWhiteSpace(request.SearchKey))
@@ -21,11 +21,17 @@ public class GetUserService : IGetUsersService
         }
 
         int rowsCount = 0;
-        return users.ToPaged(request.Page, 20, out rowsCount).Select(q => new GetUsersDto
+        var usersList = users.ToPaged(request.Page, 20, out rowsCount).Select(q => new GetUsersDto
         {
             Email = q.Email,
             FullName = q.FullName,
             Id = q.Id,
         }).ToList();
+
+        return new ResultGetUserDto
+        {
+            Rows = rowsCount,
+            Users = usersList
+        };
     }
 }
